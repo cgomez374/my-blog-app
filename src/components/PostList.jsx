@@ -1,18 +1,13 @@
-import posts from "../data/posts.js"
+import PostItem from "./PostItem.jsx"
 
-export default function PostList(){
+export default function PostList({ postData }){
   return (
     <section className="post-list-container">
       <h2>Post list component</h2>
       <ul>
         {
-          posts.map(post => (
-            <li key={post.id}>
-              <h3>{ post.title }</h3>
-              <p>{ post.date }</p>
-              <p>{ post.author }</p>
-              <p>{ post.content.substring(0, 30) + "..." }</p>
-            </li>
+          postData.map(post => (
+            <PostItem  key={post.id} post={post} />
           ))
         }
       </ul>
