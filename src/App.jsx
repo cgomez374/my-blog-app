@@ -1,7 +1,13 @@
 import './App.css'
+import PostList from './components/PostList'
 
 function App() {
-  return <h1>my blog app</h1>
+  return (
+    <main>
+      <h1>Blog Post App</h1>
+      <PostList />
+    </main>
+  )
 }
 
 export default App
