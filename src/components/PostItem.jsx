@@ -2,12 +2,12 @@ import { Link } from "react-router-dom"
 
 export default function PostItem({ post }){
   return (
-    <li key={post.id}>
+    <li>
       <h3>{ post.title }</h3>
       <p>{ post.date }</p>
       <p>{ post.author }</p>
       <p>{ post.content.substring(0, 30) + "..." }</p>
-      <div className="">
+      <div className="post-options-links">
         <Link 
           to={ `/post/${post.id}` }
           state={ post }

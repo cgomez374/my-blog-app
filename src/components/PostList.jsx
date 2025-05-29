@@ -7,11 +7,10 @@ export default function PostList({ postData }){
       <ul>
         {
           postData.map(post => (
-            <PostItem  key={post.id} post={post} />
+            <PostItem key={post.id} post={post} />
           ))
         }
       </ul>
-    
     </section>
   )
 }

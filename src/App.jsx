@@ -15,17 +15,30 @@ import { useState } from 'react'
 
 function App() {
   const [postData, setpostData] = useState([...posts])
-  // need to create function to add post to state
+  
+  function addPost(post){
+    setpostData(prevPosts => [...prevPosts, {...post, id: prevPosts.length + 1}])
+  }
+
+  function updatePost(id, formData){
+    const updatedPost = {
+      ...formData,
+      id
+    }
+    setpostData(prevPostData => {
+      return prevPostData.map(post => post.id === id ? updatedPost : post)
+    })
+  }
 
   return (
     <Router>
-      <h1>Blog App</h1>
       <Navbar />
+      <h1>Blog App</h1>
       <Routes>
         <Route path='/' element={ <PostList postData={postData} /> } />
         <Route path='/post/:id' element={ <PostDetails /> } />
-        <Route path='/add' element={ <CreatePost setpostData={setpostData}  /> } />
-        <Route path='/edit/:id' element={ <EditPost /> } />
+        <Route path='/add' element={ <CreatePost addPost={addPost}  /> } />
+        <Route path='/edit/:id' element={ <EditPost updatePost={updatePost} /> } />
         <Route path='/login' element={ <Login /> } />
         <Route path='*' element={ <NotFound /> } />
       </Routes>
