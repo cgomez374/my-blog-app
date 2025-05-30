@@ -4,11 +4,9 @@ import PostItem from "./PostItem.jsx"
 export default function PostList({ postData, deletePost, filter, setFilter }){
   const categories = [...new Set(postData.map(post => post.category))]
 
-  // FIX FILTER NOT UPDATING SELECT ELEMENT
-
   useEffect(() => {
-    !categories.includes(filter) ? setFilter('all') : ''
-  }, [postData])
+    !categories.includes(filter) ? setFilter("all") : ""
+  }, [postData, categories])
 
   const filteredList = postData.filter(post => {
     if(filter !== 'all') return filter.toLowerCase() === post.category.toLowerCase()
@@ -22,7 +20,7 @@ export default function PostList({ postData, deletePost, filter, setFilter }){
   return (
     <section className="post-list-container">
       <h2>Post list component</h2>
-      <select name="categories" defaultValue={filter} onChange={handleSelectChange}>
+      <select name="categories" value={filter} onChange={handleSelectChange}>
         <option value="all">all</option>
         {
           categories.map((category, idx) => (
