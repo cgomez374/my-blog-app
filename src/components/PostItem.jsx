@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom"
 
-export default function PostItem({ post }){
+export default function PostItem({ post, deletePost }){
   return (
     <li>
       <h3>{ post.title }</h3>
-      <p>{ post.date }</p>
-      <p>{ post.author }</p>
-      <p>{ post.content.substring(0, 30) + "..." }</p>
+      <p>date: { post.date }</p>
+      <p>author: { post.author }</p>
+      <p>{ post.content.substring(0, 50) + "..." }</p>
       <div className="post-options-links">
         <Link 
           to={ `/post/${post.id}` }
@@ -16,10 +16,13 @@ export default function PostItem({ post }){
         </Link>
         <Link 
           to={ `/edit/${post.id}` }
-          state={{ post }}
+          state={ post }
         >
           edit
         </Link>
+        <button onClick={() => deletePost(post.id)}>
+          delete
+        </button>
       </div>
     </li>
   )

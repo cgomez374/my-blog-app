@@ -1,13 +1,13 @@
 import PostItem from "./PostItem.jsx"
 
-export default function PostList({ postData }){
+export default function PostList({ postData, deletePost }){
   return (
     <section className="post-list-container">
       <h2>Post list component</h2>
       <ul>
         {
           postData.map(post => (
-            <PostItem key={post.id} post={post} />
+            <PostItem key={post.id} post={post} deletePost={deletePost} />
           ))
         }
       </ul>

@@ -30,13 +30,20 @@ function App() {
     })
   }
 
+  function deletePost(id){
+    console.log('hello from app', id)
+    setpostData(prevPostData => 
+      prevPostData.filter(post => 
+        post.id != id ? post : '' ))
+  }
+
   return (
     <Router>
       <Navbar />
       <h1>Blog App</h1>
       <Routes>
-        <Route path='/' element={ <PostList postData={postData} /> } />
-        <Route path='/post/:id' element={ <PostDetails /> } />
+        <Route path='/' element={ <PostList postData={postData} deletePost={deletePost} /> } />
+        <Route path='/post/:id' element={ <PostDetails deletePost={deletePost} /> } />
         <Route path='/add' element={ <CreatePost addPost={addPost}  /> } />
         <Route path='/edit/:id' element={ <EditPost updatePost={updatePost} /> } />
         <Route path='/login' element={ <Login /> } />

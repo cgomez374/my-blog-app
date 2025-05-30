@@ -2,14 +2,13 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 export default function PostForm({ action, addPost, updatePost, post }){
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     title: post ? post.title : '',
     content: post ? post.content : '',
     author: post ? post.author : '',
     category: post ? post.category : ''
   })
-
-  const navigate = useNavigate()
 
   function handleChange(e){
     setFormData(prevFormData => {

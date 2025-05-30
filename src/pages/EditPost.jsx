@@ -12,7 +12,7 @@ export default function EditPost({ updatePost }){
       <PostForm 
         action='edit' 
         updatePost={updatePost} 
-        post={location.state.post}
+        post={location.state}
       />
     </section>
   )
