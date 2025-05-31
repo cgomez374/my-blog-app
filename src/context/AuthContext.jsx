@@ -27,8 +27,24 @@ export function AuthProvider({children}){
     setCurrentUser(null)
   }
 
+  function registerNewUser(name, username, password){
+    const id = users.length + 1
+    const exists = users.some(user => user.username === username)
+    if(!exists){
+      users.push({
+        id,
+        name,
+        username,
+        password
+      })
+      return true
+    }
+    
+    return false
+  }
+
   return (
-    <AuthContext.Provider value={{ currentUser, loggedInStatus, login, logout }}>
+    <AuthContext.Provider value={{ currentUser, loggedInStatus, login, logout, registerNewUser }}>
       {children}
     </AuthContext.Provider>
   )

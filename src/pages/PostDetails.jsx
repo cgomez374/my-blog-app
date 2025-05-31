@@ -9,7 +9,7 @@ export default function PostDetails({ deletePost }){
 
   if (!location.state) return null
 
-  const { id, title, content, author, date } = location.state
+  const { id, title, content, author, publishingDate } = location.state
 
   const isCurrentUserTheAuthor = ( currentUser && currentUser.name) === author
 
@@ -23,7 +23,7 @@ export default function PostDetails({ deletePost }){
     <section className="post-details">
       <h1>{ title }</h1>
       <h4>by {author}</h4>
-      <h4>posted: { date }</h4> 
+      <h4>posted: { publishingDate }</h4> 
       <p className="content">{ content }</p>
       {
         (loggedInStatus && isCurrentUserTheAuthor) && 

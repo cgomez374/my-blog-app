@@ -1,7 +1,7 @@
 import LoginForm from "../components/LoginForm"
 import { useEffect } from "react"
 import { useAuthContext } from "../context/AuthContext"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 export default function Login(){
   const { loggedInStatus, login } = useAuthContext()  
@@ -12,15 +12,18 @@ export default function Login(){
     if(loggedInStatus) navigate('/')
   }, [loggedInStatus])
 
-  function handleLogin(e, username, password){
-    e.preventDefault()
+  function handleLogin(username, password){
     login(username, password)
   }
 
    return (
     <section>
       <h1>Login</h1>
-      <LoginForm handleLogin={handleLogin} />
+      <LoginForm
+        isNewUser={false} 
+        handleLogin={handleLogin} 
+      />
+      <Link to='/register'>new user</Link>
     </section>
 
   )

@@ -10,6 +10,7 @@ import CreatePost from './pages/CreatePost'
 import EditPost from './pages/EditPost'
 import Login from './pages/Login'
 import NotFound from './pages/NotFound'
+import RegisterNewUser from './pages/RegisterNewUser'
 // COMPONENTS
 import Navbar from './components/Navbar'
 import PostList from './components/PostList'
@@ -61,6 +62,7 @@ function App() {
           <Route path='/add' element={ <CreatePost addPost={addPost}  /> } />
           <Route path='/edit/:id' element={ <EditPost updatePost={updatePost} /> } />
           <Route path='/login' element={ <Login /> } />
+          <Route path='/register' element={ <RegisterNewUser /> } />
           <Route path='*' element={ <NotFound /> } />
         </Routes>
       </Router>

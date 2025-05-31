@@ -1,10 +1,15 @@
 import {  useState } from "react"
+import { useLocation } from "react-router-dom"
 
-export default function LoginForm({ handleLogin }){
+export default function LoginForm({ isNewUser, handleLogin, handleRegister }){
   const [loginFormData, setLoginFormData] = useState({
+    firstName: '',
+    lastName: '',
     username: '',
     password: ''
   })
+
+  const successfullyRegistered = useLocation().state?.successfullyRegistered
 
   function handleLoginFormChange(event){
     setLoginFormData(prevLoginData => {
@@ -14,8 +19,38 @@ export default function LoginForm({ handleLogin }){
       }
     })
   }
+
+  function handleSubmit(e){
+    e.preventDefault()
+    isNewUser 
+    ? handleRegister(loginFormData.firstName + ' ' + loginFormData.lastName, loginFormData.username, loginFormData.password)
+    : handleLogin(loginFormData.username, loginFormData.password)
+  }
   return (
-    <form onSubmit={(e) => handleLogin(e, loginFormData.username, loginFormData.password)}>
+    <form onSubmit={handleSubmit}>
+      {
+        successfullyRegistered && <p>successfully Registered, please login!</p>
+      }
+      {
+        isNewUser && 
+        <input 
+          name="firstName"
+          type="text" 
+          value={FormData.firstName}
+          onChange={handleLoginFormChange}
+          placeholder="first name"
+        />
+      }
+      {
+        isNewUser &&
+        <input 
+          name="lastName"
+          type="text" 
+          value={FormData.lastName}
+          onChange={handleLoginFormChange}
+          placeholder="last name"
+        />
+      }
       <input
         name="username" 
         type="text" 
