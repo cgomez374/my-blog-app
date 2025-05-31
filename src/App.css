@@ -13,6 +13,10 @@ li {
   list-style: none;
 }
 
+section {
+  text-align: center;
+  margin-top: 20px;
+}
 
 /* NAVBAR */
 nav {
@@ -113,7 +117,7 @@ select {
 
 .post-form-container{
   width: 100%;
-  padding: 30px 5px;
+  padding: 0 5px;
   text-align: center;
 }
 

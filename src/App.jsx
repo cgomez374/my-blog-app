@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
 // DATA
 import posts from './data/posts'
+// CONTEXT
+import { AuthProvider } from './context/AuthContext'
 // PAGES
 import PostDetails from './pages/PostDetails'
 import CreatePost from './pages/CreatePost'
@@ -36,27 +38,28 @@ function App() {
       prevPostData.filter(post => 
         post.id !== id))
   }
-
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path='/' element={ 
-          <PostList 
-            postData={postData} 
-            deletePost={deletePost}
-            filter={filter} 
-            setFilter={setFilter}
-          /> 
-          } 
-        />
-        <Route path='/post/:id' element={ <PostDetails deletePost={deletePost} /> } />
-        <Route path='/add' element={ <CreatePost addPost={addPost}  /> } />
-        <Route path='/edit/:id' element={ <EditPost updatePost={updatePost} /> } />
-        <Route path='/login' element={ <Login /> } />
-        <Route path='*' element={ <NotFound /> } />
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={ 
+            <PostList 
+              postData={postData} 
+              deletePost={deletePost}
+              filter={filter} 
+              setFilter={setFilter}
+            /> 
+            } 
+          />
+          <Route path='/post/:id' element={ <PostDetails deletePost={deletePost} /> } />
+          <Route path='/add' element={ <CreatePost addPost={addPost}  /> } />
+          <Route path='/edit/:id' element={ <EditPost updatePost={updatePost} /> } />
+          <Route path='/login' element={ <Login /> } />
+          <Route path='*' element={ <NotFound /> } />
+        </Routes>
+      </Router>
+    </AuthProvider>
   )
 }
 

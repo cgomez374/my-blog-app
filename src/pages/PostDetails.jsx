@@ -1,8 +1,10 @@
 import { Link, useLocation, useNavigate } from "react-router-dom"
+import { useAuthContext } from "../context/AuthContext"
 
 export default function PostDetails({ deletePost }){
   const location = useLocation()
   const navigate = useNavigate()
+  const { loggedInStatus } = useAuthContext()
 
 
   if (!location.state) return null
@@ -20,17 +22,20 @@ export default function PostDetails({ deletePost }){
       <h4>by {author}</h4>
       <h4>posted: { date }</h4> 
       <p className="content">{ content }</p>
-      <div className="post-options-links">
-        <Link 
-          to={ `/edit/${id}` }
-          state={ location.state }
-        >
-          edit
-        </Link>
-        <button onClick={handleClick}>
-          delete
-        </button>
-      </div>
+      {
+        loggedInStatus && 
+        <div className="post-options-links">
+          <Link 
+            to={ `/edit/${id}` }
+            state={ location.state }
+          >
+            edit
+          </Link>
+          <button onClick={handleClick}>
+            delete
+          </button>
+        </div>
+      }
     </section>
   )
 }
