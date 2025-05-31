@@ -19,7 +19,7 @@ export default function PostList({ postData, deletePost, filter, setFilter }){
 
   return (
     <section className="post-list-container">
-      <h2>Post list component</h2>
+      <h1>Blog Posts</h1>
       <select name="categories" value={filter} onChange={handleSelectChange}>
         <option value="all">all</option>
         {

@@ -16,7 +16,6 @@ import { useState } from 'react'
 function App() {
   const [postData, setpostData] = useState([...posts])
   const [filter, setFilter] = useState('all')
-  // const categories = [...new Set(posts.map(post => post.category))]
   
   function addPost(post){
     setpostData(prevPosts => [...prevPosts, {...post, id: prevPosts.length + 1}])
@@ -36,13 +35,11 @@ function App() {
     setpostData(prevPostData => 
       prevPostData.filter(post => 
         post.id !== id))
-    // !categories.includes(filter) ? setFilter('all') : ''
   }
 
   return (
     <Router>
       <Navbar />
-      <h1>Blog App</h1>
       <Routes>
         <Route path='/' element={ 
           <PostList 
@@ -50,7 +47,6 @@ function App() {
             deletePost={deletePost}
             filter={filter} 
             setFilter={setFilter}
-            // categories={categories}
           /> 
           } 
         />

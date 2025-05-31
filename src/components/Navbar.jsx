@@ -4,9 +4,9 @@ export default function Navbar(){
   return (
     <nav>
       <ul>
-        <Link to='/'>Home</Link>
-        <Link to='/add'>Add Post</Link>
-        <Link to='/login'>Login</Link>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/add'>Add Post</Link></li>
+        <li><Link to='/login'>Login</Link></li>
       </ul>
     </nav>
   )

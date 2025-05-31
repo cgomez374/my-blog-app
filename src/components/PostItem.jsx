@@ -14,7 +14,7 @@ export default function PostItem({ post, deletePost }){
         >
           view
         </Link>
-        <Link 
+        {/* <Link 
           to={ `/edit/${post.id}` }
           state={ post }
         >
@@ -22,7 +22,7 @@ export default function PostItem({ post, deletePost }){
         </Link>
         <button onClick={() => deletePost(post.id)}>
           delete
-        </button>
+        </button> */}
       </div>
     </li>
   )

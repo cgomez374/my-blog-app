@@ -7,8 +7,8 @@ export default function EditPost({ updatePost }){
   if(!location.state) return null
   
   return (
-    <section>
-      <h1>Edit Post Page</h1>
+    <section className="post-form-container">
+      <h1>Edit Post</h1>
       <PostForm 
         action='edit' 
         updatePost={updatePost} 

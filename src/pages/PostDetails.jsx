@@ -15,12 +15,12 @@ export default function PostDetails({ deletePost }){
   }
 
   return (
-    <section>
-      <h2>{ title }</h2>
+    <section className="post-details">
+      <h1>{ title }</h1>
       <h4>by {author}</h4>
       <h4>posted: { date }</h4> 
-      <p>{ content }</p>
-      <div className="">
+      <p className="content">{ content }</p>
+      <div className="post-options-links">
         <Link 
           to={ `/edit/${id}` }
           state={ location.state }
