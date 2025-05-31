@@ -9,7 +9,7 @@ export default function PostItem({ post, deletePost }){
       <h3>{ post.title }</h3>
       <p>date: { post.publishingDate }</p>
       <p>author: { post.author }</p>
-      <p>{ post.content.substring(0, 50) + "..." }</p>
+      <p className="post-item-content">{ post.content.substring(0, 120) + '...' }</p>
       <div className="post-options-links">
         <Link 
           to={ `/post/${post.id}` }

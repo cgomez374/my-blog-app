@@ -27,7 +27,7 @@ export default function LoginForm({ isNewUser, handleLogin, handleRegister }){
     : handleLogin(loginFormData.username, loginFormData.password)
   }
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="login-reg-form" onSubmit={handleSubmit}>
       {
         successfullyRegistered && <p>successfully Registered, please login!</p>
       }

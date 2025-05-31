@@ -17,13 +17,13 @@ export default function Login(){
   }
 
    return (
-    <section>
+    <section className="login-page">
       <h1>Login</h1>
+      <Link to='/register'>register as new user</Link>
       <LoginForm
         isNewUser={false} 
         handleLogin={handleLogin} 
       />
-      <Link to='/register'>new user</Link>
     </section>
 
   )
