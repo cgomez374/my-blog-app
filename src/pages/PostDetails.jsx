@@ -4,12 +4,15 @@ import { useAuthContext } from "../context/AuthContext"
 export default function PostDetails({ deletePost }){
   const location = useLocation()
   const navigate = useNavigate()
-  const { loggedInStatus } = useAuthContext()
+  const { loggedInStatus, currentUser } = useAuthContext()
 
 
   if (!location.state) return null
 
   const { id, title, content, author, date } = location.state
+
+  const isCurrentUserTheAuthor = ( currentUser && currentUser.name) === author
+
   
   function handleClick(){
     deletePost(id)
@@ -23,7 +26,7 @@ export default function PostDetails({ deletePost }){
       <h4>posted: { date }</h4> 
       <p className="content">{ content }</p>
       {
-        loggedInStatus && 
+        (loggedInStatus && isCurrentUserTheAuthor) && 
         <div className="post-options-links">
           <Link 
             to={ `/edit/${id}` }

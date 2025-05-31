@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
 
 export default function Navbar(){
-  const { loggedInStatus, logout } = useAuthContext()
+  const { loggedInStatus, logout, currentUser } = useAuthContext()
   return (
     <nav>
       <ul>
@@ -18,6 +18,9 @@ export default function Navbar(){
         }
         </li>
       </ul>
+      {
+        currentUser && <p>hello, {currentUser.name}!</p>
+      }
     </nav>
   )
 }

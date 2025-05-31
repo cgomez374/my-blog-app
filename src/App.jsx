@@ -3,7 +3,7 @@ import './App.css'
 // DATA
 import posts from './data/posts'
 // CONTEXT
-import { AuthProvider } from './context/AuthContext'
+import { AuthProvider, useAuthContext } from './context/AuthContext'
 // PAGES
 import PostDetails from './pages/PostDetails'
 import CreatePost from './pages/CreatePost'
@@ -19,8 +19,13 @@ function App() {
   const [postData, setpostData] = useState([...posts])
   const [filter, setFilter] = useState('all')
   
-  function addPost(post){
-    setpostData(prevPosts => [...prevPosts, {...post, id: prevPosts.length + 1}])
+  function addPost(post, author){
+    setpostData(prevPosts => 
+      [...prevPosts, {
+        ...post, 
+        id: prevPosts.length + 1,
+        author
+      }])
   }
 
   function updatePost(id, formData){

@@ -1,7 +1,9 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useAuthContext } from "../context/AuthContext"
 
 export default function PostForm({ action, addPost, updatePost, post }){
+  const { currentUser } = useAuthContext()
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     title: post ? post.title : '',
@@ -20,7 +22,9 @@ export default function PostForm({ action, addPost, updatePost, post }){
 
   function handleSubmit(e){
     e.preventDefault()
-    action === 'create' ? addPost(formData) : updatePost(post.id, formData)
+    action === 'create' 
+    ? addPost(formData, currentUser.name) 
+    : updatePost(post.id, formData)
     navigate('/')
   }
 
@@ -41,13 +45,13 @@ export default function PostForm({ action, addPost, updatePost, post }){
         onChange={handleChange}
       >
       </textarea>
-      <input 
+      {/* <input 
         type="text" 
         name="author" 
         placeholder="author" 
         value={formData.author}
         onChange={handleChange}
-      />
+      /> */}
       <input 
         type="text" 
         name="category" 

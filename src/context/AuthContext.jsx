@@ -12,21 +12,23 @@ export const useAuthContext = () => useContext(AuthContext)
 // CREATE A PROVIDER COMPONENT
 export function AuthProvider({children}){
   const [loggedInStatus, setLoggedInStatus] = useState(false)
+  const [currentUser, setCurrentUser] = useState(null)
 
   function login(username, password){
-    users.forEach(user => 
-      user.username === username && user.password === password 
-      ? setLoggedInStatus(true)
-      : ''
-    )
+    users.forEach(user => {
+      if(user.username === username && user.password === password){
+        setLoggedInStatus(true)
+        setCurrentUser(user)
+      }})
   }
 
   function logout(){
     setLoggedInStatus(false)
+    setCurrentUser(null)
   }
 
   return (
-    <AuthContext.Provider value={{ loggedInStatus, login, logout }}>
+    <AuthContext.Provider value={{ currentUser, loggedInStatus, login, logout }}>
       {children}
     </AuthContext.Provider>
   )
