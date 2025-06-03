@@ -15,6 +15,7 @@ import RegisterNewUser from './pages/RegisterNewUser'
 import Navbar from './components/Navbar'
 import PostList from './components/PostList'
 import { useState } from 'react'
+import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
   const [postData, setpostData] = useState([...posts])
@@ -58,9 +59,11 @@ function App() {
             /> 
             } 
           />
-          <Route path='/post/:id' element={ <PostDetails deletePost={deletePost} /> } />
-          <Route path='/add' element={ <CreatePost addPost={addPost}  /> } />
-          <Route path='/edit/:id' element={ <EditPost updatePost={updatePost} /> } />
+          <Route element={<ProtectedRoute />} >
+            <Route path='/post/:id' element={ <PostDetails deletePost={deletePost} /> } />
+            <Route path='/add' element={ <CreatePost addPost={addPost}  /> } />
+            <Route path='/edit/:id' element={ <EditPost updatePost={updatePost} /> } />
+          </Route>
           <Route path='/login' element={ <Login /> } />
           <Route path='/register' element={ <RegisterNewUser /> } />
           <Route path='*' element={ <NotFound /> } />
