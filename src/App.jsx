@@ -5,6 +5,8 @@ import posts from './data/posts'
 // CONTEXT
 import { AuthProvider, useAuthContext } from './context/AuthContext'
 // PAGES
+import HomePage from './pages/HomePage'
+import UsersPostList from './pages/UsersPostList'
 import PostDetails from './pages/PostDetails'
 import CreatePost from './pages/CreatePost'
 import EditPost from './pages/EditPost'
@@ -51,7 +53,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' element={ 
-            <PostList 
+            <HomePage 
               postData={postData} 
               deletePost={deletePost}
               filter={filter} 
@@ -63,6 +65,7 @@ function App() {
             <Route path='/post/:id' element={ <PostDetails deletePost={deletePost} /> } />
             <Route path='/add' element={ <CreatePost addPost={addPost}  /> } />
             <Route path='/edit/:id' element={ <EditPost updatePost={updatePost} /> } />
+            <Route path='/my-posts' element={<UsersPostList posts={postData} deletePost={deletePost} />} />
           </Route>
           <Route path='/login' element={ <Login /> } />
           <Route path='/register' element={ <RegisterNewUser /> } />

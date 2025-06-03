@@ -8,7 +8,13 @@ export default function Navbar(){
       <ul>
         <li><Link to='/'>Home</Link></li>
         { 
-          loggedInStatus && <li><Link to='/add'>Add Post</Link></li>
+          loggedInStatus 
+          && (
+            <>
+              <li><Link to='/add'>Add Post</Link></li>
+              <li><Link to='/my-posts'>My Posts</Link></li>
+            </>
+          )
         }
         <li>
         {
