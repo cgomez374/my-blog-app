@@ -1,10 +1,10 @@
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import PostForm from "../components/PostForm";
 
 export default function EditPost({ updatePost }){
   const location = useLocation()
 
-  if(!location.state) return null
+  if(!location.state) return <Navigate to='*' />
   
   return (
     <section className="post-form-container">

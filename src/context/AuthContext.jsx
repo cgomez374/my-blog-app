@@ -11,20 +11,35 @@ export const useAuthContext = () => useContext(AuthContext)
 
 // CREATE A PROVIDER COMPONENT
 export function AuthProvider({children}){
-  const [loggedInStatus, setLoggedInStatus] = useState(false)
-  const [currentUser, setCurrentUser] = useState(null)
+  const savedLoggedInStatus = JSON.parse(localStorage.getItem('loginInfo'))
+  const savedCurrentUser = JSON.parse(localStorage.getItem('loginInfo'))
+  const [loggedInStatus, setLoggedInStatus] = useState(
+    savedLoggedInStatus ? savedLoggedInStatus.loggedInStatus : false
+  )
+  const [currentUser, setCurrentUser] = useState(
+    savedCurrentUser ? savedCurrentUser.currentUser : null
+  )
 
   function login(username, password){
     users.forEach(user => {
       if(user.username === username && user.password === password){
         setLoggedInStatus(true)
         setCurrentUser(user)
+        localStorage.setItem('loginInfo', JSON.stringify({
+          loggedInStatus: true,
+          currentUser: user
+        }))
       }})
   }
 
   function logout(){
     setLoggedInStatus(false)
     setCurrentUser(null)
+    localStorage.setItem('loginInfo', JSON.stringify({
+          loggedInStatus: false,
+          currentUser: null
+        }))
+
   }
 
   function registerNewUser(name, username, password){
