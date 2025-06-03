@@ -3,7 +3,7 @@ import './App.css'
 // DATA
 import posts from './data/posts'
 // CONTEXT
-import { AuthProvider, useAuthContext } from './context/AuthContext'
+import { AuthProvider } from './context/AuthContext'
 // PAGES
 import HomePage from './pages/HomePage'
 import UsersPostList from './pages/UsersPostList'
@@ -15,21 +15,40 @@ import NotFound from './pages/NotFound'
 import RegisterNewUser from './pages/RegisterNewUser'
 // COMPONENTS
 import Navbar from './components/Navbar'
-import PostList from './components/PostList'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
-  const [postData, setpostData] = useState([...posts])
+  useEffect(() => {
+    !JSON.parse(localStorage.getItem('posts')) 
+    ? localStorage.setItem('posts', JSON.stringify(posts))
+    : ''
+  }, [])
+
+  function getPostData(){
+    return JSON.parse(localStorage.getItem('posts'))
+  }
+
+  function updatePostLocalStorage(posts){
+      localStorage.setItem('posts', JSON.stringify(posts))
+  }
+  const [postData, setpostData] = useState([
+    ...getPostData()
+  ])
   const [filter, setFilter] = useState('all')
+
   
   function addPost(post, author){
-    setpostData(prevPosts => 
-      [...prevPosts, {
+    const id = crypto.randomUUID();
+    setpostData(prevPosts => {
+      const updatedPostList = [...prevPosts, {
         ...post, 
-        id: prevPosts.length + 1,
+        id,
         author
-      }])
+      }]
+      updatePostLocalStorage(updatedPostList)
+      return updatedPostList
+    })
   }
 
   function updatePost(id, formData){
@@ -38,14 +57,19 @@ function App() {
       id
     }
     setpostData(prevPostData => {
-      return prevPostData.map(post => post.id === id ? updatedPost : post)
+      const updatedPostList = prevPostData.map(post => post.id === id ? updatedPost : post)
+      updatePostLocalStorage(updatedPostList)
+      return updatedPostList
     })
   }
 
   function deletePost(id){
-    setpostData(prevPostData => 
-      prevPostData.filter(post => 
-        post.id !== id))
+    setpostData(prevPostData => {
+      const updatedPostList = prevPostData.filter(post => 
+        post.id !== id)
+      updatePostLocalStorage(updatedPostList)
+      return updatedPostList
+    })
   }
   return (
     <AuthProvider>

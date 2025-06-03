@@ -1,6 +1,6 @@
 const posts = [
   {
-    id: 1,
+    id: crypto.randomUUID(),
     title: "The Rise of Serverless Architecture",
     author: "Jane Smith",
     content:
@@ -9,7 +9,7 @@ const posts = [
     publishingDate: "2024-10-01",
   },
   {
-    id: 2,
+    id: crypto.randomUUID(),
     title: "Understanding React's Virtual DOM",
     author: "Carlos Gomez",
     content:
@@ -18,7 +18,7 @@ const posts = [
     publishingDate: "2024-09-22",
   },
   {
-    id: 3,
+    id: crypto.randomUUID(),
     title: "A Beginner’s Guide to RESTful APIs",
     author: "Alice Johnson",
     content:
@@ -27,7 +27,7 @@ const posts = [
     publishingDate: "2024-11-14",
   },
   {
-    id: 4,
+    id: crypto.randomUUID(),
     title: "Why Cybersecurity Should Be Everyone’s Responsibility",
     author: "Michael Lee",
     content:
@@ -36,7 +36,7 @@ const posts = [
     publishingDate: "2024-12-02",
   },
   {
-    id: 5,
+    id: crypto.randomUUID(),
     title: "Exploring Python for Data Analysis",
     author: "Nina Patel",
     content:
@@ -45,7 +45,7 @@ const posts = [
     publishingDate: "2025-01-05",
   },
   {
-    id: 6,
+    id: crypto.randomUUID(),
     title: "The Future of Work in the Age of AI",
     author: "Elijah Turner",
     content:
@@ -54,7 +54,7 @@ const posts = [
     publishingDate: "2025-02-10",
   },
   {
-    id: 7,
+    id: crypto.randomUUID(),
     title: "10 UX Principles Every Developer Should Know",
     author: "Lena Roberts",
     content:
@@ -63,7 +63,7 @@ const posts = [
     publishingDate: "2025-03-03",
   },
   {
-    id: 8,
+    id: crypto.randomUUID(),
     title: "Demystifying DevOps for Beginners",
     author: "Oscar Morales",
     content:
@@ -72,7 +72,7 @@ const posts = [
     publishingDate: "2025-03-18",
   },
   {
-    id: 9,
+    id: crypto.randomUUID(),
     title: "Machine Learning 101: Concepts and Applications",
     author: "Samantha Wu",
     content:
@@ -81,7 +81,7 @@ const posts = [
     publishingDate: "2025-04-12",
   },
   {
-    id: 10,
+    id: crypto.randomUUID(),
     title: "Getting Started with Git and GitHub",
     author: "David Kim",
     content:
@@ -90,5 +90,4 @@ const posts = [
     publishingDate: "2025-05-20",
   },
 ];
-
 export default posts;

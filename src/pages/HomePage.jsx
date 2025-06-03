@@ -19,7 +19,9 @@ export default function HomePage({ postData, deletePost, filter, setFilter }){
 
   return (
     <section className="post-list-container">
-      <h1>Blog Posts</h1>
+      <div className="banner">
+        <h1>yapper - the yap app!</h1>
+      </div>
       <select name="categories" value={filter} onChange={handleSelectChange}>
         <option value="all">all</option>
         {
@@ -30,9 +32,6 @@ export default function HomePage({ postData, deletePost, filter, setFilter }){
       </select>
       {
         <PostList filteredList={filteredList} deletePost={deletePost} />
-        // filteredList.map(post => (
-        //   <PostItem key={post.id} post={post} deletePost={deletePost} />
-        // ))
       }
     </section>
   )

@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-
 /* BASE RESET & PRESETS */
 * {
   margin: 0;
@@ -10,29 +9,30 @@
 
 h1 {
   text-align: center;
+  text-transform: capitalize;
 }
 
+h3,
 h4 {
   text-transform: capitalize;
 }
 
 body {
   font-family: 'Inter', sans-serif;
-  /* Use a professional font */
-  background-color: #f9fafb;
-  color: #333;
+  background-color: #f4f6f9;
+  color: #2c2c2c;
   text-transform: none;
   line-height: 1.6;
 }
 
 a {
   text-decoration: none;
-  color: #0077cc;
+  color: #3b82f6;
   transition: color 0.2s ease;
 }
 
 a:hover {
-  color: #005fa3;
+  color: #2563eb;
 }
 
 li {
@@ -48,7 +48,7 @@ section {
 /* NAVBAR */
 nav {
   background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   padding: 0 30px;
   height: 60px;
   display: flex;
@@ -77,6 +77,14 @@ nav p {
   margin-left: auto;
 }
 
+/* banner */
+.banner {
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  margin: 20px 0;
+  color: #374151;
+}
+
 /* POST LIST */
 .post-list-container {
   max-width: 900px;
@@ -91,7 +99,7 @@ select {
   width: 50%;
   padding: 8px 10px;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #cbd5e1;
   font-size: 1rem;
   text-transform: capitalize;
 }
@@ -107,7 +115,7 @@ select {
   background-color: #ffffff;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
   transition: transform 0.2s ease;
 }
 
@@ -136,12 +144,12 @@ select {
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 65px;
-  height: 25px;
-  font-size: 0.7rem;
+  width: 70px;
+  height: 28px;
+  font-size: 0.75rem;
   border: none;
   border-radius: 5px;
-  background-color: #0077cc;
+  background-color: #10b981;
   color: white;
   cursor: pointer;
   text-decoration: none;
@@ -152,7 +160,7 @@ select {
 
 .post-options-links a:hover,
 .post-options-links button:hover {
-  background-color: #005fa3;
+  background-color: #059669;
   transform: translateY(-1px);
 }
 
@@ -176,7 +184,7 @@ select {
 
 .post-details .content {
   line-height: 1.8;
-  color: #444;
+  color: #374151;
   font-size: 1rem;
   width: 90%;
   margin: 0 auto;
@@ -209,7 +217,7 @@ input,
 textarea {
   width: 100%;
   padding: 10px 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #cbd5e1;
   border-radius: 5px;
   font-size: 1rem;
 }
@@ -221,7 +229,7 @@ form textarea {
 input::placeholder,
 textarea::placeholder {
   text-transform: capitalize;
-  color: #999;
+  color: #9ca3af;
 }
 
 form button {
@@ -229,7 +237,7 @@ form button {
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
-  background-color: #0077cc;
+  background-color: #3b82f6;
   color: white;
   font-weight: bold;
   text-transform: uppercase;
@@ -238,7 +246,7 @@ form button {
 }
 
 form button:hover {
-  background-color: #005fa3;
+  background-color: #2563eb;
 }
 
 .login-reg-form input {

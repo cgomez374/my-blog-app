@@ -6,6 +6,7 @@ export default function UsersPostList({ posts, deletePost }){
   const filteredList = posts.filter(post => post.author === currentUser.name)
   return (
     <section className="post-list-container">
+      <h1>my posts</h1>
       <PostList filteredList={filteredList} deletePost={deletePost} />
     </section>
   )
