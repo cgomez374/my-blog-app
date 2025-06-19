@@ -26,7 +26,7 @@ function App() {
   }, [])
 
   function getPostData(){
-    return JSON.parse(localStorage.getItem('posts'))
+    return JSON.parse(localStorage.getItem('posts')) || posts
   }
 
   function updatePostLocalStorage(posts){
