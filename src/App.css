@@ -45,7 +45,7 @@ section {
   margin-top: 40px;
 }
 
-/* NAVBAR */
+/* NAVBAR
 nav {
   background-color: #ffffff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
@@ -75,6 +75,60 @@ nav p {
   font-weight: bold;
   font-size: 1.1rem;
   margin-left: auto;
+} */
+
+/* NAVBAR */
+nav {
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  padding: 0 30px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  text-transform: capitalize;
+  justify-content: space-between;
+}
+
+/* Hamburger button */
+.hamburger {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+/* Nav links */
+nav ul {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Each nav item */
+nav ul li {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* Greeting text */
+nav p {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-left: auto;
+  white-space: nowrap;
 }
 
 /* banner */
@@ -113,7 +167,7 @@ select {
 
 .post-list-container ul li {
   background-color: #ffffff;
-  padding: 20px;
+  padding: 40px;
   border-radius: 8px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
   transition: transform 0.2s ease;
@@ -125,8 +179,6 @@ select {
 
 .post-list-container .post-item-content {
   margin: 20px auto;
-  width: 70%;
-  height: 50px;
 }
 
 .post-options-links {
@@ -257,4 +309,42 @@ form button:hover {
 .login-page a {
   margin-top: 50px;
   text-transform: capitalize;
+}
+
+@media (max-width: 768px) {
+  nav {
+    height: auto;
+    padding: 10px 20px;
+  }
+
+  /* Stack nav links */
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background: #ffffff;
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: fit-content;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  /* Stack greeting below or hide on mobile if you prefer */
+  nav p {
+    margin-top: 10px;
+    margin-left: 0;
+    width: 100%;
+    text-align: right;
+  }
 }

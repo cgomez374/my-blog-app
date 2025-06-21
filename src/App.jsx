@@ -86,11 +86,11 @@ function App() {
             } 
           />
           <Route element={<ProtectedRoute />} >
-            <Route path='/post/:id' element={ <PostDetails deletePost={deletePost} /> } />
             <Route path='/add' element={ <CreatePost addPost={addPost}  /> } />
             <Route path='/edit/:id' element={ <EditPost updatePost={updatePost} /> } />
             <Route path='/my-posts' element={<UsersPostList posts={postData} deletePost={deletePost} />} />
           </Route>
+          <Route path='/post/:id' element={ <PostDetails deletePost={deletePost} /> } />
           <Route path='/login' element={ <Login /> } />
           <Route path='/register' element={ <RegisterNewUser /> } />
           <Route path='*' element={ <NotFound /> } />
